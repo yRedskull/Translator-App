@@ -3,8 +3,8 @@ from customtkinter import *
 from navbar import NavBar
 
 from assets.py.load_img import ImagesLoad
-from assets.py.var import *
-from assets.py.utils.functions import *
+from assets.py.var import DEFAULT_LISTENER, DEFAULT_TRANSLATOR, LANGS_TRANSLATE
+from assets.py.utils.functions import change_language_listener, release_translation_translator, Thread, change_language_translator
 
 from os import path
 
@@ -66,6 +66,7 @@ class App(CTk):
             if hasattr(self, 'after_id') and self.after_id is not None:
                 self.after_cancel(self.after_id)
             self.after_id = self.after(300, resolve)
+            return event
 
         self.textbox_listener = CTkTextbox(self.div_listener, height=450, wrap="word")
         self.textbox_listener.bind("<Control-v>", paste_listener)
