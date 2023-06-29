@@ -1,4 +1,4 @@
-from customtkinter import *
+from customtkinter import CTkSwitch, CTkFrame, get_appearance_mode, set_appearance_mode, StringVar
 
 
 class NavBar(CTkFrame):
