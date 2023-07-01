@@ -1,4 +1,4 @@
-from customtkinter import CTkSwitch, CTkFrame, get_appearance_mode, set_appearance_mode, StringVar
+from customtkinter import CTkSwitch, CTkFrame, get_appearance_mode, set_appearance_mode, StringVar, CTkButton
 
 
 class NavBar(CTkFrame):
@@ -20,4 +20,5 @@ class NavBar(CTkFrame):
         value_off = offvaluetheme()
         switch_theme_mode = StringVar(value=get_appearance_mode())
         self.btn_mode = CTkSwitch(self, text=get_appearance_mode(), variable=switch_theme_mode, command=switch_theme, onvalue=get_appearance_mode(), offvalue=value_off)
-        self.btn_mode.pack(anchor="e")
+        self.btn_mode.pack(side="right")
+
