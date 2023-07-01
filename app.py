@@ -66,7 +66,7 @@ class App(CTk):
                         break
 
             self.combobox_listener.after(300, Thread(target=auto_detect).start())
-            self.textbox_listener.after(350, Thread(target=lambda: release_translation_translator(self)).start())
+            self.textbox_listener.after(600, Thread(target=lambda: release_translation_translator(self)).start())
 
             return event
 
