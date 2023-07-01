@@ -7,12 +7,14 @@ import json
 def config_font(self):
     try:
         with open(os.path.join(os.path.dirname(__file__), "assets", "json", "custom_font.json"), "r") as custom_font:
-            font = json.loads(custom_font.read())
-            self.font = CTkFont(family=font["family"], size=font["size"],
-                                weight=font["weight"], slant=font["slant"],
-                                underline=font["underline"], overstrike=font["overstrike"])
+            fonts = json.loads(custom_font.read())
+            textbox = fonts["Textbox"]
+            self.font_textbox = CTkFont(family=textbox["family"], size=textbox["size"],
+                                        weight=textbox["weight"], slant=textbox["slant"],
+                                        underline=textbox["underline"], overstrike=textbox["overstrike"])
+            self.font_combobox = CTkFont()
     except:
-        self.font = {
+        self.font_textbox = {
             "family": "Roboto",
             "size": 18,
             "weight": "normal",
