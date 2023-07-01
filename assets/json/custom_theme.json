@@ -13,10 +13,10 @@
     "border_color": ["gray65", "gray28"]
   },
   "CTkButton": {
-    "corner_radius": 6,
-    "border_width": 0,
+    "corner_radius": 5,
+    "border_width": 1,
     "fg_color": ["#3B8ED0", "#1F6AA5"],
-    "hover_color": ["#36719F", "#144870"],
+    "hover_color": ["gray75", "gray28"],
     "border_color": ["#3E454A", "#949A9F"],
     "text_color": ["#DCE4EE", "#DCE4EE"],
     "text_color_disabled": ["gray74", "gray60"]
@@ -142,8 +142,8 @@
       "weight": "normal"
     },
     "Windows": {
-      "family": "Open Sans",
-      "size": 16,
+      "family": "Arial",
+      "size": 20,
       "weight": "normal"
     },
     "Linux": {
