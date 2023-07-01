@@ -23,5 +23,11 @@
 
 ### **3. Execution 🦈**
 * **Enter the folder where the repository was cloned**
-* Type on your terminal `pip install -r requirements.txt` 
-* And type `py run.py`
+* Download the necessary packages
+```
+pip install -r requirements.txt
+``` 
+* And run
+```
+py run.py
+```
