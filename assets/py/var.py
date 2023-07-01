@@ -3,25 +3,25 @@ import json
 
 
 LANGS_TRANSLATE = {
-                    "Português": "portuguese",
+                    "Português": "pt",
 
-                    "Inglês": "english",
+                    "Inglês": "en",
 
-                    "Francês": "french",
+                    "Francês": "fr",
 
-                    "Chinês (Simplificado)": "chinese (simplified)",
+                    "Chinês (Simplificado)": "zh-cn",
 
-                    "Chinês (Tradicional)": "chinese (traditional)",
+                    "Chinês (Tradicional)": "zh-tw",
 
-                    "Ucraniano": "ukrainian",
+                    "Ucraniano": "uk",
 
-                    "Italiano": "italian",
+                    "Italiano": "it",
 
-                    "Alemão": "german",
+                    "Alemão": "de",
 
-                    "Espanhol": "spanish",
+                    "Espanhol": "es",
 
-                    "Russo": "russian"
+                    "Russo": "ru"
 }
 
 try:
