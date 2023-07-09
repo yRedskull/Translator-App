@@ -1,4 +1,4 @@
-from assets.py.translate import translate
+from src.assets.py.translate import translate
 
 from threading import Thread
 
@@ -16,7 +16,7 @@ def change_language_listener(self, get=None):
             trade_text(self, listener, translator)
 
     if listener and translator:
-        self.combobox_listener.after(100, Thread(target=lambda: release_translation_listener(self)).start())
+        Thread(target=lambda: self.combobox_listener.after(100, release_translation_listener(self))).start()
 
     return self.combobox_listener.set(get)
 
@@ -32,7 +32,7 @@ def change_language_translator(self, get=None):
             trade_text(self, listener, translator)
 
     if listener and translator:
-        self.combobox_translator.after(100, Thread(target=lambda: release_translation_translator(self)).start())
+        Thread(target=lambda: self.combobox_translator.after(100, release_translation_translator(self))).start()
 
     return self.combobox_translator.set(get)
 

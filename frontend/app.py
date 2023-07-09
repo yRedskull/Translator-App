@@ -2,11 +2,15 @@ from customtkinter import *
 
 from CTkScrollableDropdown import CTkScrollableDropdown
 
-from navbar import NavBar
+try:
+    from frontend.navbar import NavBar
+except:
+    from navbar import NavBar
 
-from assets.py.load_img import ImagesLoad
-from assets.py.var import DEFAULT_LISTENER, DEFAULT_TRANSLATOR, LANGS_TRANSLATE
-from assets.py.utils.functions import *
+from src.assets.py.load_img import ImagesLoad
+from src.assets.py.var import DEFAULT_LISTENER, DEFAULT_TRANSLATOR, LANGS_TRANSLATE
+from src.assets.py.utils.functions import change_language_listener, change_language_translator, fade_out
+from src.assets.py.utils.listener import paste_listener, key_release_listener
 
 from os import path
 
@@ -24,7 +28,7 @@ class App(CTk):
 
         self.images = ImagesLoad()
 
-        set_default_color_theme(path.join(path.dirname(__file__), "assets", "json", "custom_theme.json"))
+        set_default_color_theme(path.join(path.dirname(__file__), "../src/assets", "json", "custom_theme.json"))
 
         self.title("Translator App")
         self.wm_iconbitmap(self.images.logo_bitmap)
@@ -51,40 +55,9 @@ class App(CTk):
                                                        command=lambda get: change_language_listener(self, get), height=600, button_height=30)
         self.combobox_listener.set(DEFAULT_LISTENER)
 
-        def paste_listener(event):
-            def auto_detect():
-                listener = self.textbox_listener.get("0.0", "end").replace("\n", "")
-                translator = translate()
-                detect = translator.detect(listener)
-
-                for key in LANGS_TRANSLATE.keys():
-                    if detect.lang == LANGS_TRANSLATE[key]:
-                        if key == self.combobox_translator.get():
-                            self.combobox_translator.set(self.combobox_listener.get())
-
-                        self.combobox_listener.set(key)
-                        break
-
-            self.combobox_listener.after(300, Thread(target=auto_detect).start())
-            self.textbox_listener.after(600, Thread(target=lambda: release_translation_translator(self)).start())
-
-            return event
-
-        def key_release_listener(event):
-            def resolve():
-                self.textbox_translator.configure(state="normal")
-                self.textbox_translator.delete("0.0", "end")
-                self.textbox_translator.configure(state="normal")
-                Thread(target=lambda: release_translation_translator(self)).start()
-
-            if self.after_id:
-                self.after_cancel(self.after_id)
-            self.after_id = self.after(400, resolve)
-            return event
-
         self.textbox_listener = CTkTextbox(self.div_listener, height=450, wrap="word")
-        self.textbox_listener.bind("<Control-v>", paste_listener)
-        self.textbox_listener.bind("<KeyRelease>", key_release_listener)
+        self.textbox_listener.bind("<Control-v>", lambda e: paste_listener(self))
+        self.textbox_listener.bind("<KeyRelease>", lambda e: key_release_listener(self))
         self.textbox_listener.pack(fill=BOTH, expand=True)
 
         self.div_translator = CTkFrame(self, fg_color=self.cget("fg_color"))

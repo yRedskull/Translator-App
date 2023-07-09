@@ -1,6 +1,6 @@
 from googletrans import Translator
 
-from assets.py.var import LANGS_TRANSLATE, DEFAULT_SYSTEM
+from src.assets.py.var import LANGS_TRANSLATE, DEFAULT_SYSTEM
 
 
 def listener_for_translator(translator):

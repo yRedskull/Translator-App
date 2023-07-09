@@ -1,4 +1,4 @@
-from app import App
+from frontend.app import App
 
 
 app = App()
