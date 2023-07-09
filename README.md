@@ -12,7 +12,7 @@
 ### **2. Make the clone [of this repository](https://github.com/yRedskull/Translator-App.git) on your machine:**
 
 * Create a folder on your computer for this program, I recommend putting the name **Translator-App** <br>
-* **Open `Git Bash` or` Terminal` Within this folder <br>**
+* **Open `Git Bash` or `Terminal` Within this folder <br>**
 * Copy the [URL] (https://github.com/yRedskull/Translator-App.git)
 * Enter `git clone <copy>` and press `Enter` <br>
 * **You can also access by [GitHub Desktop](https://desktop.github.com/) <br>**
