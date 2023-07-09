@@ -14,7 +14,7 @@
 * Create a folder on your computer for this program, I recommend putting the name **Translator-App** <br>
 * **Open `Git Bash` or` Terminal` Within this folder <br>**
 * Copy the [URL] (https://github.com/yRedskull/Translator-App.git)
-* Enter `Git Clone <copy>` and press `Enter` <br>
+* Enter `git clone <copy>` and press `Enter` <br>
 * **You can also access by [GitHub Desktop](https://desktop.github.com/) <br>**
 * Open your `Github desktop` <br>
 * Click `File` in the upper left corner <br>
@@ -23,5 +23,11 @@
 
 ### **3. Execution 🦈**
 * **Enter the folder where the repository was cloned**
-* Type on your terminal `pip install -r requirements.txt` 
-* And type `py run.py`
+* Download the necessary packages
+```
+pip install -r requirements.txt
+``` 
+* And run
+```
+py run.py
+```
