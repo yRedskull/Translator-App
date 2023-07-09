@@ -2,7 +2,7 @@
 
 <div align="center">
   <h3>Visitor Counter</h1>
-  <img src="https://visit-counter.vercel.app/counter.png?page=https://github.com/yRedskull/Translator-App/&c=1F6AA5&ff=caprasimo" width="40" height="40"><br>
+  <img src="https://visit-counter.vercel.app/counter.png?page=https://github.com/yRedskull/Translator-App/&c=1F6AA5&s=80" width="80" height="80"><br>
   <img height="50"><br>
   <img src="./src/assets/images/readme.png" width="798" height="508"><br>
 </div>
