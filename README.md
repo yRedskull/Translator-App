@@ -1,6 +1,6 @@
 # Translator App Desktop
 
-<img src="./assets/images/readme.png" width="798" height="508">
+<img src="./src/assets/images/readme.png" width="798" height="508">
 
 ## **Feature:**
 * **📋 Translate any text you want**
