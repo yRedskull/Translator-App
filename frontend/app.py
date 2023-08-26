@@ -22,6 +22,13 @@ class App(CTk):
         super().__init__(*args, **kwargs)
 
         # VAR
+        self.textbox_translator = None
+        self.dropdown_translator = None
+        self.div_translator = None
+        self.dropdown_listener = None
+        self.textbox_listener = None
+        self.div_listener = None
+        self.navbar = None
         self.combobox_translator = None
         self.combobox_listener = None
         self.after_id = None
@@ -43,16 +50,24 @@ class App(CTk):
         self.resizable(True, True)
         self.minsize(620, 430)
 
+        self.after_idle(self.components)
+
+        self.protocol("WM_DELETE_WINDOW", self.exit)
+
+    def components(self):
         self.navbar = NavBar(self, corner_radius=0)
         self.navbar.pack(side="top", fill=X)
 
         self.div_listener = CTkFrame(self, fg_color=self.cget("fg_color"))
         self.div_listener.pack(side="left", fill=BOTH, expand=True, padx=2)
 
-        self.combobox_listener = CTkComboBox(self.div_listener, width=300, cursor="hand2", state="readonly", justify="center", font=("Roboto", 20), corner_radius=5)
+        self.combobox_listener = CTkComboBox(self.div_listener, width=300, cursor="hand2", state="readonly",
+                                             justify="center", font=("Roboto", 20), corner_radius=5)
         self.combobox_listener.pack(pady=5)
-        self.dropdown_listener = CTkScrollableDropdown(self.combobox_listener, values=list(LANGS_TRANSLATE.keys()), width=300, frame_corner_radius=5,
-                                                       command=lambda get: change_language_listener(self, get), height=600, button_height=30)
+        self.dropdown_listener = CTkScrollableDropdown(self.combobox_listener, values=list(LANGS_TRANSLATE.keys()),
+                                                       width=300, frame_corner_radius=5,
+                                                       command=lambda get: change_language_listener(self, get),
+                                                       height=600, button_height=30)
         self.combobox_listener.set(DEFAULT_LISTENER)
 
         self.textbox_listener = CTkTextbox(self.div_listener, height=450, wrap="word")
@@ -63,17 +78,17 @@ class App(CTk):
         self.div_translator = CTkFrame(self, fg_color=self.cget("fg_color"))
         self.div_translator.pack(side="left", fill=BOTH, expand=True, padx=2)
 
-        self.combobox_translator = CTkComboBox(self.div_translator, width=300, cursor="hand2", state="readonly", justify="center", font=("Roboto", 20), corner_radius=5)
+        self.combobox_translator = CTkComboBox(self.div_translator, width=300, cursor="hand2", state="readonly",
+                                               justify="center", font=("Roboto", 20), corner_radius=5)
         self.combobox_translator.pack(pady=5)
-        self.dropdown_translator = CTkScrollableDropdown(self.combobox_translator, values=list(LANGS_TRANSLATE.keys()), width=300, frame_corner_radius=5,
-                                                         command=lambda get: change_language_translator(self, get), height=600, button_height=30)
+        self.dropdown_translator = CTkScrollableDropdown(self.combobox_translator, values=list(LANGS_TRANSLATE.keys()),
+                                                         width=300, frame_corner_radius=5,
+                                                         command=lambda get: change_language_translator(self, get),
+                                                         height=600, button_height=30)
         self.combobox_translator.set(DEFAULT_TRANSLATOR)
 
         self.textbox_translator = CTkTextbox(self.div_translator, state="disabled", height=450, wrap="word")
         self.textbox_translator.pack(fill=BOTH, expand=True)
-
-        self.protocol("WM_DELETE_WINDOW", self.exit)
-
     def exit(self):
         fade_out(self)
         self.destroy()
