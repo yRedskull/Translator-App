@@ -1,27 +1,18 @@
-from googletrans import Translator
+from deep_translator import GoogleTranslator as Translator
 
-from src.assets.py.var import LANGS_TRANSLATE, DEFAULT_SYSTEM
-
-
-def listener_for_translator(translator):
-    source = "auto"
-
-    if translator:
-        destiny = LANGS_TRANSLATE[translator]
-    else:
-        destiny = LANGS_TRANSLATE[DEFAULT_SYSTEM]
-
-    return source, destiny
+from src.assets.py.var import LANGS_TRANSLATE
 
 
-def translate(text=None, lang_translator=None):
-    translator = Translator()
+def translate(text, lang_translator):
+    src, target = "auto", LANGS_TRANSLATE[lang_translator]
+    translator = Translator(src=src, target=target)
     text_translated = None
-    src, dest = listener_for_translator(lang_translator)
+
     if text:
         try:
-            text_translated = translator.translate(text, src=src, dest=dest).text
+            text_translated = translator.translate(text)
         except:
+
             text_translated = None
         finally:
             return text_translated or text
