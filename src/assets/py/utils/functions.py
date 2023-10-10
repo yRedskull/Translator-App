@@ -11,7 +11,7 @@ def select_dropdown_language(self, shooter, target, get=None):
     shooter.set(get)
 
     if shooter == self.combobox_translator:
-        show_translation()
+        show_translation(self)
 
 
 def inverter_languages(self):
@@ -21,6 +21,7 @@ def inverter_languages(self):
     self.combobox_listener.set(change_listener)
     self.combobox_translator.set(change_translator)
     trade_text(self)
+    show_translation(self)
 
 
 def trade_text(self):
