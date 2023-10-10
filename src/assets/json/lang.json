@@ -1,5 +1,5 @@
 {
-    "default_system": "Português",
-    "default_listener": "Português",
-    "default_translator": "Inglês"
+    "default_system": "portuguese",
+    "default_listener": "english",
+    "default_translator": "portuguese"
 }
