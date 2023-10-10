@@ -1,5 +1,6 @@
 from src.assets.py.var import LANGS_TRANSLATE
-from src.assets.py.utils.functions import translate, Thread, release_translation_translator
+from src.assets.py.utils.functions import translate, show_translation
+from threading import Thread
 
 
 def paste_listener(self):
@@ -17,7 +18,7 @@ def paste_listener(self):
                     break
 
     self.combobox_listener.after(400, auto_detect)
-    Thread(target=lambda: self.textbox_listener.after(600, release_translation_translator(self))).start()
+    Thread(target=lambda: self.textbox_listener.after(600, show_translation(self))).start()
 
 
 def key_release_listener(self):
@@ -27,7 +28,7 @@ def key_release_listener(self):
             self.textbox_translator.configure(state="normal")
             self.textbox_translator.delete("0.0", "end")
             self.textbox_translator.configure(state="normal")
-            Thread(target=lambda: release_translation_translator(self)).start()
+            Thread(target=lambda: show_translation(self)).start()
 
         if self.after_id:
             self.after_cancel(self.after_id)
