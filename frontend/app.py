@@ -9,7 +9,7 @@ except:
 
 from src.assets.py.load_img import ImagesLoad
 from src.assets.py.var import DEFAULT_LISTENER, DEFAULT_TRANSLATOR, LANGS_TRANSLATE
-from src.assets.py.utils.functions import change_language_listener, change_language_translator, fade_out
+from src.assets.py.utils.functions import select_dropdown_language, fade_out
 from src.assets.py.utils.listener import paste_listener, key_release_listener
 
 from os import path
@@ -22,6 +22,8 @@ class App(CTk):
         super().__init__(*args, **kwargs)
 
         # VAR
+        self.div_trade = None
+        self.btn_trade = None
         self.textbox_translator = None
         self.dropdown_translator = None
         self.div_translator = None
@@ -66,8 +68,9 @@ class App(CTk):
         self.combobox_listener.pack(pady=5)
         self.dropdown_listener = CTkScrollableDropdown(self.combobox_listener, values=list(LANGS_TRANSLATE.keys()),
                                                        width=300, frame_corner_radius=5,
-                                                       command=lambda get: change_language_listener(self, get),
-                                                       height=600, button_height=30)
+                                                       command=lambda get: select_dropdown_language(self, self.combobox_listener,
+                                                                                                    self.combobox_translator, get=get),
+                                                       height=350, button_height=30)
         self.combobox_listener.set(DEFAULT_LISTENER)
 
         self.textbox_listener = CTkTextbox(self.div_listener, height=450, wrap="word")
@@ -75,7 +78,7 @@ class App(CTk):
         self.textbox_listener.bind("<KeyRelease>", lambda e: key_release_listener(self))
         self.textbox_listener.pack(fill=BOTH, expand=True)
 
-        self.div_translator = CTkFrame(self, fg_color=self.cget("fg_color"))
+        self.div_translator = CTkFrame(self.div_trade, fg_color=self.cget("fg_color"))
         self.div_translator.pack(side="left", fill=BOTH, expand=True, padx=2)
 
         self.combobox_translator = CTkComboBox(self.div_translator, width=300, cursor="hand2", state="readonly",
@@ -83,12 +86,13 @@ class App(CTk):
         self.combobox_translator.pack(pady=5)
         self.dropdown_translator = CTkScrollableDropdown(self.combobox_translator, values=list(LANGS_TRANSLATE.keys()),
                                                          width=300, frame_corner_radius=5,
-                                                         command=lambda get: change_language_translator(self, get),
-                                                         height=600, button_height=30)
+                                                         command=lambda get: select_dropdown_language(self, self.combobox_translator, self.combobox_listener, get),
+                                                         height=350, button_height=30)
         self.combobox_translator.set(DEFAULT_TRANSLATOR)
 
         self.textbox_translator = CTkTextbox(self.div_translator, state="disabled", height=450, wrap="word")
         self.textbox_translator.pack(fill=BOTH, expand=True)
+
     def exit(self):
         fade_out(self)
         self.destroy()
